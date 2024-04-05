@@ -4,7 +4,7 @@ Created on Tue May  9 11:58:36 2023
 
 @author: Marjan
 """
-
+# This code extracts d prime score for n-back verbal task from csv files
 import os
 import csv
 from scipy import stats

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import math
 
-#5*5 maze can be coded as numpy array 7*15 - 0:occupied cell, 1:freecell
+#maze can be coded as numpy array 7*15 - 0:occupied cell, 1:freecell
 maze=np.array([
     [0, 0, 0, 1, 0, 0, 0],
     [0, 1, 1, 1, 1, 1, 1],

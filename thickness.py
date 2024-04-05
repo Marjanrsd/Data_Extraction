@@ -1,6 +1,7 @@
 import os
 import csv
 
+# This code extracts cortical thickness from the output of the FreeSurfer
 data_dir = r"/mnt/chrastil/users/marjanrsd/corticalthickness/"
 sub_dirs = os.listdir(data_dir)
 sub_ids = []

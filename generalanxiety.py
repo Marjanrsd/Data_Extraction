@@ -4,8 +4,10 @@ Created on Tue May 16 01:42:12 2023
 
 @author: Marjan
 """
+# This code extracts trait anxiety values from csv files
 import os
 import csv
+
 with open("general_anxiety4.csv", "r") as f:
     id_score_list = []
     reader = csv.reader(f, delimiter=",")

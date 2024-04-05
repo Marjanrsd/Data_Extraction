@@ -9,14 +9,9 @@ import pandas as pd
 from factor_analyzer import FactorAnalyzer
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 #import the data
 df= pd.read_csv(r'D:\lizzzz\factorRoute.csv')
-#df.columns
-# df=df.drop(["hit rate", "hit rate2", "z(fa rate)", "z(hit rate)", "fa rate", 
-#         "fa rtae2", "Sleep", "z(fa rate2)", "z(hit rate2)"], axis=1, inplace=True)
-
-
-# del df['Sleep']  #if u wanna delete a column in python
 
 df=df[df["Chronic stress"].notna()]
 df=df[df["Percieved stress"].notna()]
@@ -80,20 +75,9 @@ vif_df["feature"] = X.columns
 # calculating VIF for each feature
 vif_df["VIF"] = [variance_inflation_factor(X.values, i)
                    for i in range(len(X.columns))]
-
 print(vif_df)
 
-# this is what I did in short
-# variance_inflation_factor(df.values, 0) 0 is the index (chronic stress)
-# variance_inflation_factor(df.values, 1) 1 is the index (perceived stress)
-# variance_inflation_factor(df.values, 2) 2 is the index (spatial anxiety)
-# variance_inflation_factor(df.values, 3) 3 is the index (trait anxiety)
-# all of these vif values are higher than 5 which shows multicollinearity in
-# the variables
-
-
 #correlation matrix
-
 # Save correlations here:
 corrs=df.corr()
 # Plot heatmap here:

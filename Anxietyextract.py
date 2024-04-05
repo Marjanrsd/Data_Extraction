@@ -4,7 +4,7 @@ Created on Sat Feb  4 12:09:50 2023
 
 @author: Marjan
 """
-
+# This code extracts spatial anxiety scores from csv files
 import os
 import csv
 

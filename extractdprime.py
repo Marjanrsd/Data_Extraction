@@ -4,7 +4,7 @@ Created on Sat Mar  4 08:06:25 2023
 
 @author: Marjan
 """
-
+# This code extracts d prime values for n-back spatial task
 import os
 import csv
 

@@ -4,7 +4,7 @@ Created on Thu Oct 12 12:40:05 2023
 
 @author: marja
 """
-
+# This code extracts Route Learning Scores from csv files 
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt

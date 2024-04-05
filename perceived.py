@@ -4,9 +4,10 @@ Created on Wed May 17 12:08:51 2023
 
 @author: Marjan
 """
-
+# This code extracts perceived stress scores from a csv file
 import os
 import csv
+
 with open("perceived4.csv", "r") as f:
     id_score_list = []
     reader = csv.reader(f, delimiter=",")

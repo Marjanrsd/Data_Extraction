@@ -4,8 +4,9 @@ Created on Sat Feb  4 12:09:50 2023
 
 @author: Marjan
 """
-
+# This code extracts chronic stress scores from a csv file
 import csv
+
 with open("test4-chronic.csv", "r") as f:
     id_score_list = []
     reader = csv.reader(f, delimiter=",")

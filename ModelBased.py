@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import math
 
-#maze can be coded as numpy array 7*15 - 0:occupied cell, 1:freecell
+# This code implements model-based reinforcement learning algorithm (Q_learning) in a maze navigation task
+# Maze can be coded as numpy array 7*15 - 0:occupied cell, 1:freecell
 maze=np.array([
     [0, 0, 0, 1, 0, 0, 0],
     [0, 1, 1, 1, 1, 1, 1],

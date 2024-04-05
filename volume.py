@@ -1,6 +1,7 @@
 import os
 import csv
 
+# This code extracts ROI volumes from the output of the FreeSurfer
 data_dir = r"/mnt/chrastil/users/marjanrsd/corticalthickness/"
 sub_dirs= os.listdir(data_dir)
 #print(sub_dirs)

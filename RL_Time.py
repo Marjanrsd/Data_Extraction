@@ -2,29 +2,18 @@
 """
 Created on Fri Apr 19 09:40:28 2024
 
-@author: marja
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Oct 12 12:40:05 2023
-
-@author: marja
+@author: marjan
 """
 
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-from scipy import stats
-from sklearn import linear_model
 import statsmodels.api as sm
 import pandas as pd
-import seaborn as sns
-import imageio
 import os
 import csv
-import glob
 
+# This code extracts the total time spent in a maze from csv files
 
 result_dir=r"D:\lizzzz\time-route"
 all_csvs= os.listdir(result_dir)

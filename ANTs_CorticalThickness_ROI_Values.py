@@ -2,9 +2,9 @@
 """
 Created on Tue Apr 23 17:49:20 2024
 
-@author: marja
+@author: marjan
 """
-
+# This code extracts the cortical thickness values for each ROI for each subject from ANTs txt output
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt

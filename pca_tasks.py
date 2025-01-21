@@ -9,7 +9,11 @@ Original file is located at
 
 import numpy as np
 import pandas as pd
+import plotly.express as px
 from sklearn.decomposition import PCA
+from math import pi
+import matplotlib.pyplot as plt
+import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from google.colab import drive
@@ -96,9 +100,6 @@ plt.grid(axis='y', linestyle='--', alpha=0.6)
 plt.tight_layout()
 plt.show()
 
-import seaborn as sns
-import matplotlib.pyplot as plt
-
 # Plot the PCA loadings heatmap
 plt.figure(figsize=(10, 8))
 sns.heatmap(loadings, annot=True, cmap="coolwarm", fmt=".2f", cbar_kws={'label': 'Contribution'})
@@ -109,8 +110,6 @@ plt.xticks(rotation=45, ha='right', fontsize=14)  # Rotate feature names for bet
 plt.yticks(fontsize=14)
 plt.tight_layout()
 plt.show()
-
-from math import pi
 
 # Data for radar chart (using PC1 as an example)
 categories = loadings.columns.tolist()
@@ -131,8 +130,7 @@ ax.set_title("Feature Contributions to PC1", fontsize=18)
 plt.tight_layout()
 plt.show()
 
-import plotly.express as px
-import pandas as pd
+
 
 # Prepare PCA loading data (example for PC1)
 categories = loadings.columns.tolist()  # Feature names (theta)
@@ -160,9 +158,6 @@ fig.update_layout(
 )
 
 fig.show()
-
-import plotly.express as px
-import pandas as pd
 
 # Prepare PCA loading data (example for PC1)
 categories = loadings.columns.tolist()  # Feature names (theta)
@@ -204,83 +199,4 @@ plt.grid()
 plt.tight_layout()
 plt.show()
 
-# Calculate contributions for a specific data point
-point = pca_result[0]  # Choose the first data point (or any index)
-contributions = point[:, None] * loadings.values  # Multiply scores by loadings
 
-# Rank variables by contribution to PC1 and PC2
-pc1_contributions = contributions[:, 0]
-pc2_contributions = contributions[:, 1]
-print("Top contributors to PC1:", loadings.columns[np.argsort(-abs(pc1_contributions))])
-print("Top contributors to PC2:", loadings.columns[np.argsort(-abs(pc2_contributions))])
-
-import numpy as np
-import pandas as pd
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
-from google.colab import drive
-drive.mount('/content/drive')
-
-# import csv file as data
-result_dir=r"/content/drive/MyDrive/Machine Learning/PCA-Tasks-without-corsi.csv"
-df = pd.read_csv(result_dir)
-# remove rows with Nan values
-df = df.dropna()
-# print the number of rows in df
-print("Number of rows in df:", len(df))
-# print the number of columns in df
-print("Number of columns in df:", len(df.columns))
-max_ivtt = df['winsorized_IVTT'].max()
-# add a column that inverses IVTT values using max_ivtt
-df['Inverse_IVTT_winsorized'] = max_ivtt - df['winsorized_IVTT']
-max_sot = df['winsorized_SOT'].max()
-# add a column that inverses SOT values using max_ivtt
-df['Inverse_SOT_winsorized'] = max_sot - df['winsorized_SOT']
-# remove df["winsorized_IVTT"] and df ['winsorized_SOT']
-df = df.drop(columns=['winsorized_IVTT', 'winsorized_SOT'])
-print(df.head())
-# convert dataframe to dictionary
-data = df.to_dict()
-
-# Standardize the data
-scaler = StandardScaler()
-scaled_data = scaler.fit_transform(df)
-
-# Perform PCA
-pca = PCA(n_components=0.9)  # Keep all components initially
-pca_result = pca.fit_transform(scaled_data)
-
-# Explained variance ratio
-explained_variance = pca.explained_variance_ratio_
-
-cumulative_variance = np.cumsum(explained_variance)
-
-# Print results
-print("Explained Variance Ratio (per component):", explained_variance)
-print("\nCumulative Explained Variance:", np.cumsum(explained_variance))
-
-# Loadings (contributions of each task to each component)
-loadings = pd.DataFrame(pca.components_, columns=df.columns, index=[f'PC{i+1}' for i in range(len(pca.components_))])
-print("\nPCA Loadings (Task Contributions):")
-print(loadings)
-
-# Plot explained variance
-plt.figure(figsize=(8, 5))
-plt.bar(range(1, len(explained_variance) + 1), explained_variance, alpha=0.7, align='center', label='Individual Explained Variance')
-#plt.step(range(1, len(explained_variance) + 1), np.cumsum(explained_variance), where='mid', label='Cumulative Explained Variance')
-plt.xlabel('Principal Components')
-plt.ylabel('Variance Explained')
-plt.legend(loc='best')
-plt.title('PCA Explained Variance')
-plt.show()
-
-
-plt.figure(figsize=(8, 5))
-plt.plot(range(1, len(explained_variance) + 1), explained_variance, marker='o', linestyle='--', color='b', label='Explained Variance')
-plt.xlabel('Principal Components')
-plt.ylabel('Explained Variance')
-plt.xticks(range(1, len(explained_variance) + 1))  # Set x-ticks to 1, 2, 3, etc.
-plt.title('PCA Scree Plot')
-plt.legend(loc='best')
-plt.show()
